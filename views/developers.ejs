@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developers</title>
+</head>
+<body>
+  <h1>Developers</h1>
+  <a href="/">Back to Home</a>
+
+  <ul>
+    <% if (developers && developers.length > 0) { %>
+      <% developers.forEach(developer => { %>
+        <li>
+          <a href="/developer/<%= developer._id %>"><%= developer.name %></a> - <%= developer.role %>
+        </li>
+      <% }) %>
+    <% } else { %>
+      <p>No developers found.</p>
+    <% } %>
+  </ul>
+</body>
+</html>

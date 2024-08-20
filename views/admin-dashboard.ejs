@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Titillium+Web:300');
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .main-menu {
+      background: #212121;
+      border-right: 1px solid #e5e5e5;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      width: 250px;
+      transition: width 0.3s;
+      overflow: hidden;
+      color: #fff;
+      z-index: 1000;
+    }
+
+    .main-menu:hover {
+      width: 250px;
+    }
+
+    .main-menu ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    .main-menu li {
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-menu a {
+      display: block;
+      color: #999;
+      text-decoration: none;
+      padding: 15px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .main-menu a:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .nav-icon {
+      font-size: 2em;
+      text-align: center;
+    }
+
+    .nav-text {
+      font-family: 'Titillium Web', sans-serif;
+      font-size: 16px;
+    }
+
+    .area {
+      margin-left: 270px;
+      flex: 1;
+    }
+
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-left: 10px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      max-width: 100px;
+      height: auto;
+    }
+
+    .test-item {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-menu">
+    <!-- Main Menu Content Here -->
+  </div>
+
+  <div class="area">
+    <div class="container">
+      <h1>Admin Dashboard</h1>
+
+      <!-- Properties Table -->
+      <h2>Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Categories</th>
+            <th>Image</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% properties.forEach(property => { %>
+            <tr>
+              <td><%= property.name %></td>
+              <td><%= property.description %></td>
+              <td><%= property.price %></td>
+              <td><%= property.categories.join(', ') %></td>
+              <td><img src="<%= property.imageUrl %>" alt="Image of <%= property.name %>"></td>
+              <td>
+                <a href="/admin/edit/property/<%= property._id %>"><button>Edit</button></a>
+                <form action="/admin/delete/<%= property._id %>" method="POST" style="display:inline;">
+                  <button type="submit" onclick="return confirm('Are you sure you want to delete this property?');">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <!-- Developers Table -->
+      <h2>Developers</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Logo</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% developers.forEach(developer => { %>
+            <tr>
+              <td><%= developer.name %></td>
+              <td><%= developer.shortDescription %></td>
+              <td><img src="<%= developer.logo %>" alt="Logo of <%= developer.name %>"></td>
+              <td>
+                <a href="/admin/edit/developer/<%= developer._id %>"><button>Edit</button></a>
+                <form action="/admin/delete/<%= developer._id %>" method="POST" style="display:inline;">
+                  <button type="submit" onclick="return confirm('Are you sure you want to delete this developer?');">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <!-- Testimonies Section -->
+      <h2>Testimonies</h2>
+      <% tests.forEach(test => { %>
+        <div class="test-item">
+          <h3><%= test.name %></h3>
+          <p><%= test.longDescription %></p>
+          <p><strong>City Present:</strong> <%= test.cityPresent %></p>
+          <% if (test.logo) { %>
+            <img src="<%= test.logo %>" alt="<%= test.name %>" style="width: 100px; height: auto;">
+          <% } %>
+          <div>
+            <a href="/admin/edit/test/<%= test._id %>"><button>Edit</button></a>
+            <form action="/admin/delete/<%= test._id %>" method="POST" style="display:inline;">
+              <button type="submit" onclick="return confirm('Are you sure you want to delete this testimony?');">Delete</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+
+      <!-- Action Links -->
+      <a href="/logout" class="back-link">Logout</a><br>
+      <a href="/add" class="back-link">Add Property</a><br>
+      <a href="/add-developer" class="back-link">Add Developer</a><br>
+      <a href="/add-task" class="back-link">Add Details</a><br>
+      <a href="/addTest" class="back-link">Add Test</a>
+    </div>
+  </div>
+</body>
+
+</html>
+

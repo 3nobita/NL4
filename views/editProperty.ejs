@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Property</title>
+
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Property</h1>
+      <form action="/admin/update/property/<%= property._id %>" method="POST">
+      <div class="form-group">
+        <label for="categories">Categories:</label>
+        <select name="categories" id="categories" multiple  >
+          <option value="Hero" <%= property.categories.includes('Hero') ? 'selected' : '' %>>Hero</option>
+          <option value="Spotlight" <%= property.categories.includes('Spotlight') ? 'selected' : '' %>>Spotlight</option>
+          <option value="Luxury Redefined" <%= property.categories.includes('Luxury Redefined') ? 'selected' : '' %>>Luxury Redefined</option>
+          <option value="Trending Residences" <%= property.categories.includes('Trending Residences') ? 'selected' : '' %>>Trending Residences</option>
+          <option value="Accessible Project" <%= property.categories.includes('Accessible Project') ? 'selected' : '' %>>Accessible Project</option>
+          <option value="SIGNATURE Developments" <%= property.categories.includes('SIGNATURE Developments') ? 'selected' : '' %>>SIGNATURE Developments</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL:</label>
+        <input type="text" id="imageUrl" name="imageUrl" value="<%= property.imageUrl %>">
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= property.name %>"  >
+      </div>
+      <div class="form-group">
+        <label for="by">By:</label>
+        <input type="text" name="by" id="by" value="<%= property.by %>">
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location" value="<%= property.location %>">
+      </div>
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="text" name="price" id="price" value="<%= property.price %>"  >
+      </div>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <input type="text" name="status" id="status" value="<%= property.status %>">
+      </div>
+      <div class="form-group">
+        <label for="configuration">Configuration:</label>
+        <input type="text" name="configuration" id="configuration" value="<%= property.configuration %>">
+      </div>
+      <div class="form-group">
+        <label for="possession">Possession Date:</label>
+        <input type="date" name="possession" id="possession" value="<%= property.possession %>">
+      </div>
+      <div class="form-group">
+        <label for="units">Units:</label>
+        <input type="number" name="units" id="units" value="<%= property.units %>">
+      </div>
+      <div class="form-group">
+        <label for="land">Land:</label>
+        <input type="text" name="land" id="land" value="<%= property.land %>">
+      </div>
+      <div class="form-group">
+        <label for="residence">Residence:</label>
+        <input type="text" name="residence" id="residence" value="<%= property.residence %>">
+      </div>
+      <div class="form-group">
+        <label for="builtup">Built-Up Area:</label>
+        <input type="text" name="builtup" id="builtup" value="<%= property.builtup %>">
+      </div>
+      <div class="form-group">
+        <label for="blocks">Blocks:</label>
+        <input type="text" name="blocks" id="blocks" value="<%= property.blocks %>">
+      </div>
+      <div class="form-group">
+        <label for="floor">Floor:</label>
+        <input type="text" name="floor" id="floor" value="<%= property.floor %>">
+      </div>
+      <div class="form-group">
+        <label for="noofunits">Number of Units:</label>
+        <input type="number" name="noofunits" id="noofunits" value="<%= property.noofunits %>">
+      </div>
+      <div class="form-group">
+        <label for="rera">RERA:</label>
+        <input type="text" name="rera" id="rera" value="<%= property.rera %>">
+      </div>
+      <div class="form-group">
+        <label for="highlight">Highlight:</label>
+        <textarea name="highlight" id="highlight" rows="2"><%= property.highlight %></textarea>
+      </div>
+      <div class="form-group">
+        <label for="about">About:</label>
+        <textarea name="about" id="about" rows="4"><%= property.about %></textarea>
+      </div>
+      <div class="form-group">
+        <label for="unitytype">Unity Type:</label>
+        <input type="text" name="unitytype" id="unitytype" value="<%= property.unitytype %>">
+      </div>
+      <div class="form-group">
+        <label for="size">Size:</label>
+        <input type="text" name="size" id="size" value="<%= property.size %>">
+      </div>
+      <div class="form-group">
+        <label for="range">Range:</label>
+        <input type="text" name="range" id="range" value="<%= property.range %>">
+      </div>
+      <div class="form-group">
+        <label for="booking">Booking:</label>
+        <input type="text" name="booking" id="booking" value="<%= property.booking %>">
+      </div>
+      <div class="form-group">
+        <label for="token">Token:</label>
+        <input type="text" name="token" id="token" value="<%= property.token %>">
+      </div>
+      <div class="form-group">
+        <label for="plans">Plans:</label>
+        <input type="text" name="plans" id="plans" value="<%= property.plans %>">
+      </div>
+      <div class="form-group">
+        <label for="amenities">Amenities:</label>
+        <input type="text" name="amenities" id="amenities" value="<%= property.amenities %>">
+      </div>
+      <div class="form-group">
+        <label for="virtual">Virtual Tour:</label>
+        <input type="text" name="virtual" id="virtual" value="<%= property.virtual %>">
+      </div>
+      <button type="submit">Update Property</button>
+    </form>
+    <a href="/admin" class="back-link">Back to Dashboard</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Developer</title>
+</head>
+<body>
+  <h1>Add Developer</h1>
+  <form action="/add-developer" method="POST">
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" required>
+    <br>
+    <label for="logo">Logo URL:</label>
+    <input type="text" id="logo" name="logo">
+    <br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br>
+    <label for="established">Established Date:</label>
+    <input type="date" id="established" name="established">
+    <br>
+    <label for="project">Project:</label>
+    <input type="text" id="project" name="project">
+    <br>
+    <label for="shortDescription">Short Description:</label>
+    <textarea id="shortDescription" name="shortDescription"></textarea>
+    <br>
+    <label for="longDescription">Long Description:</label>
+    <textarea id="longDescription" name="longDescription"></textarea>
+    <br>
+    <label for="ongoingProjects">Ongoing Projects (comma-separated):</label>
+    <input type="text" id="ongoingProjects" name="ongoingProjects">
+    <br>
+    <label for="cityPresent">City Present (comma-separated):</label>
+    <input type="text" id="cityPresent" name="cityPresent">
+    <br>
+    <button type="submit">Add Developer</button>
+  </form>
+  <br>
+  <a href="/">Back to Home</a>
+</body>
+</html>
